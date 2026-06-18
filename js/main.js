@@ -507,60 +507,78 @@
 
     mount.innerHTML = `
       <section class="service-hero">
-        <div class="service-hero-copy reveal">
+        <div class="service-hero-inner reveal">
           <h1>${service.title}</h1>
+          <nav class="page-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <a href="../services.html">Services</a>
+            <span>${service.title}</span>
+          </nav>
+        </div>
+      </section>
+      <section class="service-editorial">
+        <div class="service-editorial-copy reveal">
+          <h2>${service.title} that starts with the actual problem.</h2>
           <p>${service.intro}</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="../contact.html">${cfg.ctaPrimary}</a>
-            <a class="btn btn-outline" href="tel:${cfg.phone}">${cfg.phoneButtonLabel}</a>
+          <p>Instead of treating the request as a one-line booking, this service path helps organize the symptoms, equipment type, timing, and access notes a provider needs before recommending the next step. That context matters whether the answer is a small repair, a deeper inspection, a control adjustment, or a longer-term system plan.</p>
+          <div class="service-soft-note">
+            ${icon("clipboard-check")}
+            <span>Good service starts before the visit: clear symptoms, clear scope, and fewer assumptions.</span>
           </div>
         </div>
-        <div class="service-hero-media reveal reveal-right">
+        <div class="service-editorial-media reveal reveal-right">
           <img src="../${service.heroImage}" alt="${service.title}">
-          <div class="floating-note">
-            ${icon("shield-check")}
-            <span>Inspection, clear options, approved work, final testing.</span>
-          </div>
         </div>
       </section>
-      <section class="split-section">
-        <div class="reveal">
-          <h2>Built around a complete visit</h2>
-          <p>Each provider focuses on the full service path: understanding the issue, checking system condition, explaining options, completing approved work, and confirming performance before wrapping up.</p>
+
+      <section class="service-detail-band">
+        <div class="service-detail-heading reveal">
+          <h2>What this service can include</h2>
+          <p>Every job is different, but these are the practical checks and service points commonly reviewed before work is approved.</p>
         </div>
-        <div class="feature-list">
-          ${service.included.map((item) => `<div class="feature-pill reveal">${icon("check")}<span>${item}</span></div>`).join("")}
+        <div class="service-line-list">
+          ${service.included.map((item) => `<div class="service-line-item reveal">${icon("check")}<span>${item}</span></div>`).join("")}
         </div>
       </section>
-      <section class="content-band">
-        <div class="section-heading reveal">
+
+      <section class="service-image-split">
+        <div class="service-image-panel reveal reveal-left">
+          <img src="../${service.image}" alt="${service.title} service detail">
+        </div>
+        <div class="service-image-copy reveal reveal-right">
           <h2>When this service makes sense</h2>
-        </div>
-        <div class="mini-grid">
-          ${service.bestFor.map((item) => `<div class="mini-card reveal">${icon("circle-check")}<span>${item}</span></div>`).join("")}
+          <p>Use this path when the symptoms point toward ${service.category.toLowerCase()} work, but the final scope still needs to be confirmed by a qualified provider. The goal is to describe the situation well enough that the first response is useful, not vague.</p>
+          <ul class="service-plain-list">
+            ${service.bestFor.map((item) => `<li>${item}</li>`).join("")}
+          </ul>
         </div>
       </section>
-      <section class="process-section">
-        <div class="section-heading reveal">
+
+      <section class="service-timeline-section">
+        <div class="service-detail-heading reveal">
           <h2>How the visit usually works</h2>
+          <p>The process stays flexible, but most visits move through the same rhythm: listen, inspect, explain, complete approved work, and test.</p>
         </div>
-        <div class="process-grid">
+        <div class="service-timeline">
           ${service.process.map((step, index) => `
-            <div class="process-card reveal">
-              <strong>${String(index + 1).padStart(2, "0")}.</strong>
+            <div class="service-timeline-step reveal">
+              <strong>${String(index + 1).padStart(2, "0")}</strong>
               <p>${step}</p>
             </div>
           `).join("")}
         </div>
       </section>
-      <section class="split-section">
-        <div class="reveal">
+
+      <section class="service-scope-section">
+        <div class="service-scope-column reveal">
           <h2>Systems and situations covered</h2>
-          <ul class="clean-list">${service.options.map((item) => `<li>${icon("settings")} ${item}</li>`).join("")}</ul>
+          <p>These examples help frame what the provider may review once the request is submitted.</p>
+          <ul>${service.options.map((item) => `<li>${item}</li>`).join("")}</ul>
         </div>
-        <div class="reveal reveal-right">
+        <div class="service-scope-column reveal reveal-right">
           <h2>Good to know before booking</h2>
-          <ul class="clean-list">${service.details.map((item) => `<li>${icon("info")} ${item}</li>`).join("")}</ul>
+          <p>Details like age, access, parts, urgency, and existing system condition can affect the final recommendation.</p>
+          <ul>${service.details.map((item) => `<li>${item}</li>`).join("")}</ul>
         </div>
       </section>
       <section class="faq-section">
@@ -576,16 +594,20 @@
           `).join("")}
         </div>
       </section>
-      <section class="content-band">
-        <div class="section-heading reveal">
+      <section class="service-related-section">
+        <div class="service-detail-heading reveal">
           <h2>Complete the comfort cycle</h2>
+          <p>HVAC work is connected. These related services may help round out the next step if the issue points beyond a single visit.</p>
         </div>
-        <div class="related-grid">
+        <div class="service-related-list">
           ${related.map((item) => `
-            <a class="related-card reveal" href="${item.slug}.html">
+            <a class="service-related-link reveal" href="${item.slug}.html">
               ${icon(item.icon)}
-              <strong>${item.title}</strong>
-              <span>${item.short}</span>
+              <span>
+                <strong>${item.title}</strong>
+                <small>${item.short}</small>
+              </span>
+              ${icon("arrow-right")}
             </a>
           `).join("")}
         </div>
