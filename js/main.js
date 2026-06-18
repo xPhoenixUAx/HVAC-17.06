@@ -363,12 +363,33 @@
     let animationId;
     let lastFrameTime;
     let isPaused = false;
+    let activeDot = -1;
+    let position = 0;
 
-    const getRawIndex = () => Math.round(track.scrollLeft / getStep());
-    const getActiveIndex = () => ((getRawIndex() % dots.length) + dots.length) % dots.length;
+    const getLoopWidth = () => getStep() * dots.length;
+
+    const normalizePosition = () => {
+      const loopWidth = getLoopWidth();
+      if (loopWidth <= 0) return;
+      while (position >= loopWidth) position -= loopWidth;
+      while (position < 0) position += loopWidth;
+    };
+
+    const applyPosition = () => {
+      normalizePosition();
+      track.style.transform = `translate3d(${-position}px, 0, 0)`;
+    };
+
+    const getActiveIndex = () => {
+      const step = getStep();
+      if (!step) return 0;
+      return ((Math.round(position / step) % dots.length) + dots.length) % dots.length;
+    };
 
     const updateDots = () => {
       const active = Math.max(0, Math.min(dots.length - 1, getActiveIndex()));
+      if (active === activeDot) return;
+      activeDot = active;
       dots.forEach((dot, index) => {
         dot.classList.toggle("is-active", index === active);
         dot.setAttribute("aria-current", index === active ? "true" : "false");
@@ -377,28 +398,19 @@
 
     dots.forEach((dot, index) => {
       dot.addEventListener("click", () => {
-        track.scrollTo({ left: getStep() * index, behavior: "auto" });
+        position = getStep() * index;
+        applyPosition();
         updateDots();
       });
     });
-
-    const getLoopWidth = () => getStep() * dots.length;
-
-    const normalizeLoopPosition = () => {
-      const loopWidth = getLoopWidth();
-      if (loopWidth <= 0) return;
-      while (track.scrollLeft >= loopWidth) {
-        track.scrollLeft -= loopWidth;
-      }
-    };
 
     const animate = (timestamp) => {
       if (!lastFrameTime) lastFrameTime = timestamp;
       const delta = timestamp - lastFrameTime;
       lastFrameTime = timestamp;
       if (!isPaused) {
-        track.scrollLeft += delta * 0.045;
-        normalizeLoopPosition();
+        position += delta * 0.032;
+        applyPosition();
         updateDots();
       }
       animationId = window.requestAnimationFrame(animate);
@@ -424,13 +436,12 @@
       if (!isPaused) lastFrameTime = undefined;
     });
 
-    track.addEventListener("scroll", () => {
-      updateDots();
-    }, { passive: true });
     window.addEventListener("resize", () => {
-      normalizeLoopPosition();
+      activeDot = -1;
+      applyPosition();
       updateDots();
     });
+    applyPosition();
     updateDots();
     setTimeout(updateDots, 250);
     startAutoplay();

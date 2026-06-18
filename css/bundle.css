@@ -1055,20 +1055,19 @@ p {
 }
 
 .testimonials-carousel {
-  width: 100%;
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .testimonials-track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(380px, 460px);
+  grid-auto-columns: calc((100% - 52px) / 3);
   gap: 26px;
-  overflow-x: auto;
-  padding: 8px max(24px, calc((100vw - var(--max)) / 2)) 52px;
-  scroll-behavior: auto;
-  scroll-padding-inline: max(24px, calc((100vw - var(--max)) / 2));
-  scroll-snap-type: none;
-  scrollbar-width: none;
+  overflow: visible;
+  padding: 8px 0 52px;
+  will-change: transform;
 }
 
 .testimonials-track::-webkit-scrollbar {
@@ -1576,11 +1575,13 @@ summary {
 }
 
 .footer-phone {
-  display: flex;
+  display: inline-grid;
+  grid-template-columns: 38px max-content;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 26px;
   color: #fff;
+  max-width: 100%;
 }
 
 .footer-phone span {
@@ -1601,9 +1602,10 @@ summary {
 
 .footer-phone strong {
   color: #fff;
-  font-size: clamp(32px, 3.2vw, 44px);
-  line-height: 1;
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.08;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .footer-contact-item {
@@ -1734,7 +1736,7 @@ summary {
   }
 
   .footer-phone strong {
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .footer-legal-links {
@@ -1747,6 +1749,22 @@ summary {
 
   .footer-bottom {
     margin-top: 38px;
+  }
+}
+
+@media (max-width: 380px) {
+  .footer-phone {
+    gap: 10px;
+    grid-template-columns: 34px max-content;
+  }
+
+  .footer-phone span {
+    width: 34px;
+    height: 34px;
+  }
+
+  .footer-phone strong {
+    font-size: 21px;
   }
 }
 
@@ -3979,7 +3997,7 @@ body:not(.home-page) main {
   }
 
   .testimonials-track {
-    grid-auto-columns: minmax(340px, 430px);
+    grid-auto-columns: calc((100% - 26px) / 2);
   }
 
   .home-faq-wrap {
@@ -4063,10 +4081,8 @@ body:not(.home-page) main {
   }
 
   .testimonials-track {
-    grid-auto-columns: calc(100vw - 48px);
+    grid-auto-columns: 100%;
     gap: 18px;
-    padding-inline: 24px;
-    scroll-padding-inline: 24px;
   }
 
   .testimonial-card {
@@ -4712,5 +4728,60 @@ body:not(.home-page) main {
 
   .home-faq-item[open] p {
     margin: -2px 0 14px;
+  }
+}
+
+.site-footer .footer-grid {
+  grid-template-columns: minmax(260px, 1.15fr) minmax(130px, .55fr) minmax(170px, .7fr) minmax(330px, 1.25fr);
+  gap: 42px;
+}
+
+.site-footer .footer-contact {
+  min-width: 0;
+}
+
+.site-footer .footer-phone {
+  display: flex !important;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.site-footer .footer-phone span {
+  flex: 0 0 38px;
+  display: inline-grid !important;
+  margin: 0;
+}
+
+.site-footer .footer-phone strong {
+  display: inline-block;
+  white-space: nowrap !important;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1;
+}
+
+@media (max-width: 980px) {
+  .site-footer .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer .footer-contact {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer .footer-contact {
+    grid-column: auto;
+  }
+
+  .site-footer .footer-phone strong {
+    font-size: clamp(20px, 6vw, 24px);
   }
 }
