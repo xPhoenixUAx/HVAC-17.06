@@ -1,0 +1,23 @@
+window.SITE_CONFIG = {
+  companyName: "Frostline HVAC",
+  companyLegalName: "Frostline HVAC Services LLC",
+  companyId: "ID: HVAC-274910",
+  website: "www.frostlinehvac.com",
+  phone: "+12125785758",
+  phoneDisplay: "+1 (212) 578-5758",
+  phoneButtonLabel: "Call for Service",
+  email: "service@frostlinehvac.com",
+  addressLine1: "1846 Brookline Avenue",
+  addressLine2: "New York, NY 10016",
+  serviceArea: "New York City and nearby communities",
+  businessHours: "Mon-Sat: 7:00 AM - 8:00 PM",
+  footerTextPrimary: "Complete heating, cooling, ventilation, and indoor air quality support from first inspection to long-term care.",
+  footerTextSecondary: "Independent local providers help with diagnostics, installation, maintenance, upgrades, and urgent HVAC issues.",
+  disclaimerShort: "Frostline HVAC connects customers with independent local HVAC providers. Customers should verify licenses, insurance, and credentials before hiring.",
+  disclaimerFull: "Disclaimer: This site is a free service to assist users/customers in connecting with local HVAC service providers. All contractors/providers are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the customer to verify that the hired contractor/provider furnishes the necessary license, insurance, certification, or other credentials required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors/providers listed on this site.",
+  footerDisclaimer: "Disclaimer: This site is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and this site does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on this site.",
+  copyrightLine: "Frostline HVAC. All rights reserved.",
+  ctaPrimary: "Book Appointment",
+  ctaSecondary: "View Services",
+  formSuccessMessage: "Thanks for contacting {company}. A coordinator will review your request and follow up from {email}."
+};

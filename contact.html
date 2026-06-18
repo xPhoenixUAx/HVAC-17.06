@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | {{companyName}}</title>
+  <meta name="description" content="Send an HVAC service request for repair, installation, maintenance, ductwork, thermostats, or emergency help.">
+  <link rel="icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bundle.css?v=2026061827">
+</head>
+<body>
+  <div data-site-header></div>
+  <main>
+    <section class="contact-section">
+      <div class="reveal">
+        <h1>Tell us what your system is doing</h1>
+        <p>Share the service type, symptoms, equipment details, and preferred timing. The more specific the request, the easier it is for a provider to prepare.</p>
+        <div class="contact-cards">
+          <div class="contact-card"><i data-lucide="phone"></i><div><strong data-phone-label></strong><p><span data-phone-text></span> · <span data-business-hours></span></p></div></div>
+          <div class="contact-card"><i data-lucide="mail"></i><div><strong data-email-text></strong><p data-website></p></div></div>
+          <div class="contact-card"><i data-lucide="map-pin"></i><div><strong data-company-address></strong><p data-service-area></p></div></div>
+        </div>
+      </div>
+      <form class="contact-form reveal reveal-right" data-contact-form>
+        <label>Name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+        <label>Service selection
+          <select name="service">
+            <option>AC Repair Service</option>
+            <option>HVAC Installation</option>
+            <option>Preventive Maintenance</option>
+            <option>Duct Cleaning & Sealing</option>
+            <option>Thermostat Upgrades</option>
+            <option>Emergency HVAC Services</option>
+          </select>
+        </label>
+        <label>Message/project details<textarea name="message" required></textarea></label>
+        <p data-disclaimer-short></p>
+        <button class="btn btn-primary" type="submit">Send Request</button>
+        <p class="form-success" data-form-success hidden></p>
+      </form>
+    </section>
+  </main>
+  <a class="floating-phone" href="tel:+12125785758" data-phone-link aria-label="Call HVAC service"><i data-lucide="phone"></i></a>
+  <a class="back-top" href="#top" aria-label="Back to top"><i data-lucide="arrow-up"></i></a>
+  <div data-site-footer></div>
+  <div class="cookie-banner" data-cookie-banner hidden></div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="js/site-config.js?v=2026061827"></script>
+  <script src="js/services-data.js?v=2026061827"></script>
+  <script src="js/main.js?v=2026061827"></script>
+</body>
+</html>
