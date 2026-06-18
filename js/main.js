@@ -151,7 +151,7 @@
         <a class="btn btn-primary header-cta" href="${rootPrefix}contact.html">${cfg.ctaPrimary}</a>
       </header>
       <div class="mobile-panel" hidden>
-        <a class="mobile-brand" href="${rootPrefix}index.html">${icon("snowflake")}<strong data-company-name>${cfg.companyName}</strong></a>
+        <a class="mobile-brand" href="${rootPrefix}index.html">${icon("waves")}<strong data-company-name>${cfg.companyName}</strong></a>
         <a href="${rootPrefix}index.html">Home</a>
         <a href="${rootPrefix}about.html">About</a>
         <a href="${rootPrefix}services.html">Services</a>
