@@ -123,12 +123,6 @@
           <a href="mailto:${cfg.email}" data-email-link>${icon("mail")}${cfg.email}</a>
           <span>${icon("clock")}${cfg.businessHours}</span>
         </div>
-        <div class="topbar-social" aria-label="Social links">
-          <a href="#" aria-label="Facebook">${icon("facebook")}</a>
-          <a href="#" aria-label="X">${icon("twitter")}</a>
-          <a href="#" aria-label="YouTube">${icon("youtube")}</a>
-          <a href="#" aria-label="Instagram">${icon("instagram")}</a>
-        </div>
       </div>
       <header class="site-header">
         <a class="brand" href="${rootPrefix}index.html" aria-label="${cfg.companyName} home">
@@ -179,6 +173,7 @@
               <span data-company-name>${cfg.companyName}</span>
             </a>
             <p data-footer-text-primary>${cfg.footerTextPrimary}</p>
+            <p data-footer-text-secondary>${cfg.footerTextSecondary}</p>
           </div>
           <div class="footer-links">
             <h2>Company</h2>
@@ -212,6 +207,13 @@
                 <a href="mailto:${cfg.email}" data-email-link>${cfg.email}</a>
               </div>
             </div>
+            <div class="footer-contact-item">
+              ${icon("globe")}
+              <div>
+                <strong>Website</strong>
+                <a href="https://${cfg.website}" data-website-link data-website>${cfg.website}</a>
+              </div>
+            </div>
           </div>
         </div>
         <div class="footer-disclaimer">
@@ -239,6 +241,8 @@
     hydrateText("[data-phone-label]", cfg.phoneButtonLabel);
     hydrateText("[data-email-text]", cfg.email);
     hydrateText("[data-website]", cfg.website);
+    hydrateText("[data-footer-text-primary]", cfg.footerTextPrimary);
+    hydrateText("[data-footer-text-secondary]", cfg.footerTextSecondary);
     hydrateText("[data-cta-primary]", cfg.ctaPrimary);
     hydrateText("[data-service-area]", cfg.serviceArea);
     hydrateText("[data-business-hours]", cfg.businessHours);
@@ -247,6 +251,7 @@
     hydrateText("[data-year]", year);
     hydrateAttr("[data-phone-link]", "href", `tel:${cfg.phone}`);
     hydrateAttr("[data-email-link]", "href", `mailto:${cfg.email}`);
+    hydrateAttr("[data-website-link]", "href", `https://${cfg.website}`);
     document.title = document.title.replace("{{companyName}}", cfg.companyName);
   }
 
